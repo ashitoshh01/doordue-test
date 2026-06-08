@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Summarizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Document Summarizer</h1>
+            <p>Upload your document and get instant, intelligent summaries powered by NVIDIA AI.</p>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <div id="drop-zone" class="drop-zone">
+                    <div class="drop-zone-content">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p>Drag and drop your file here</p>
+                        <span>or</span>
+                        <button type="button" id="browse-btn" class="btn btn-secondary">Browse File</button>
+                        <input type="file" id="file-input" accept=".pdf,.docx,.txt,.png,.jpg,.jpeg" hidden>
+                    </div>
+                </div>
+                <div id="file-info" class="file-info hidden">
+                    <span id="file-name"></span>
+                    <button type="button" id="remove-file-btn" class="btn-icon" aria-label="Remove file">✕</button>
+                </div>
+                <div class="supported-formats">
+                    Supported: PDF, DOCX, TXT, PNG, JPG (Max 20MB)
+                </div>
+            </section>
+
+            <section class="options-section">
+                <label for="custom-instructions">Custom Instructions (Optional)</label>
+                <textarea id="custom-instructions" placeholder="e.g. Focus on financial metrics, or keep it under 3 bullet points..."></textarea>
+            </section>
+
+            <button id="generate-btn" class="btn btn-primary" disabled>Generate Summary</button>
+
+            <section id="result-section" class="result-section hidden">
+                <div class="result-header">
+                    <h2>Generated Summary</h2>
+                    <button id="copy-btn" class="btn btn-secondary btn-sm">Copy</button>
+                </div>
+                <div id="summary-output" class="summary-output"></div>
+            </section>
+
+            <div id="loading-overlay" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <p>Analyzing document...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
